@@ -20,14 +20,21 @@ int main ()
     int Pizza_Qube{5};
     int Butter_Chicken {6};
     int CurdRice {11};
-    
+    int TotBal {0};
     int Num_Rooms{0} , Num_Food {0};
-    int Number {0} , Number2 {0} , Number3{0} , RoomPayment {0}, DishPayment{0} , HotelWallet {4'00'000};
+    int Number {0} , Number2 {0} , Number3{0} , RoomPayment {0}, DishPayment{0} , HotelWallet {0};
     bool opinion {true};
-    label4:
   cout << "  Welcome to Hotel PEPS" << endl;
   cout << "  =====================" << endl;
   cout <<endl;
+  label8:
+  cout<<endl;
+  cout<<"Enter money you want to send to Hotel wallet : ";
+  cin>>HotelWallet;
+  TotBal = HotelWallet + TotBal;
+  label4:
+  cout<<"Balance in HotelWallet: "<<TotBal<<endl;
+  cout<<endl<<endl;
   cout << " ______________________ " <<endl;
   cout << "|   PREFERENCE LIST:   |" << endl;
   cout << "|----------------------|" << endl;
@@ -87,7 +94,7 @@ int main ()
         }
         else
         {
-            cout<<"Balance in HotelWallet: "<<HotelWallet<<endl;
+            
             label6:
             cout <<"Number of rooms you want : ";
             cin >>Num_Rooms;
@@ -101,22 +108,23 @@ int main ()
                       cout<<"At present we have only "<<Single_Bed_AC<<" Rooms in our Hotel"<<endl;
                       goto label6;
                   }
-                  if(HotelWallet<10000*Num_Rooms)
+                  if(TotBal<10000*Num_Rooms)
                   {
+                      
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Single Bed A/C "<<endl;
                   cout<<"Please pay Rs."<<10000*Num_Rooms<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-RoomPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-RoomPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(RoomPayment>Num_Rooms*10000)
                   {
                       cout<<"You paid extra money : "<<RoomPayment-Num_Rooms*10000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + RoomPayment-Num_Rooms*10000; 
-                      cout<<"Now, Your Balance in HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + RoomPayment-Num_Rooms*10000; 
+                      cout<<"Now, Your Balance in HotelWallet : "<<TotBal<<endl;
                       cout<<"Congratulations.Transaction is successful. Your rooms"<< " got booked"<<endl;
                       Single_Bed_AC--; 
                   }
@@ -129,13 +137,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
                               HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -166,22 +174,22 @@ int main ()
                       cout<<"At present we have only "<<Single_Bed_NAC<<" Rooms in our Hotel"<<endl;
                       goto label6;
                   }
-                if(HotelWallet<8000*Num_Rooms)
+                if(TotBal<8000*Num_Rooms)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed "<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Single Bed non-A/C "<<endl;
                   cout<<"Please pay Rs."<<8000*Num_Rooms<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-RoomPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-RoomPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(RoomPayment>8000*Num_Rooms)
                   {
                       cout<<"You paid extra money : "<<RoomPayment-8000*Num_Rooms<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + RoomPayment-8000*Num_Rooms; 
-                      cout<<"Now, Your Balance in HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + RoomPayment-8000*Num_Rooms; 
+                      cout<<"Now, Your Balance in HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. Your rooms got booked"<<endl;
                       --Single_Bed_NAC;
                   }
@@ -194,13 +202,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -230,22 +238,22 @@ int main ()
                       cout<<"At present we have only "<<Double_Bed_AC<<" Rooms in our Hotel"<<endl;
                       goto label6;
                   }
-                  if(HotelWallet<15000*Num_Rooms)
+                  if(TotBal<15000*Num_Rooms)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Double Bed A/C "<<endl;
                   cout<<"Please pay Rs."<<15000*Num_Rooms<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-RoomPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-RoomPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(RoomPayment>15000*Num_Rooms)
                   {
                       cout<<"You paid extra money : "<<RoomPayment-15000*Num_Rooms<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet=RoomPayment-15000*Num_Rooms; 
-                      cout<<"Now, Your Balance in HotelWallet : "<<HotelWallet<<endl;
+                      TotBal=TotBal-15000*Num_Rooms; 
+                      cout<<"Now, Your Balance in HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. Your rooms got booked"<<endl;
                       --Double_Bed_AC;
                   }
@@ -258,13 +266,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -294,22 +302,22 @@ int main ()
                       cout<<"At present we have only "<<Double_Bed_NAC<<" Rooms in our Hotel"<<endl;
                       goto label6;
                   }
-                  if(HotelWallet<12000*Num_Rooms)
+                  if(TotBal<12000*Num_Rooms)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Double Bed non-A/C "<<endl;
                   cout<<"Please pay Rs."<<12000*Num_Rooms<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-RoomPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-RoomPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(RoomPayment>12000*Num_Rooms)
                   {
                       cout<<"You paid extra money : "<<RoomPayment-12000*Num_Rooms<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + RoomPayment-12000*Num_Rooms; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + RoomPayment-12000*Num_Rooms; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. Your rooms got booked"<<endl;
                       --Double_Bed_NAC;
                       
@@ -323,13 +331,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -357,22 +365,22 @@ int main ()
                       cout<<"At present we have only "<<Dormitory_AC<<" Rooms in our Hotel"<<endl;
                       goto label6;
                   }
-                  if(HotelWallet<6000*Num_Rooms)
+                  if(TotBal<6000*Num_Rooms)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Dormitory A/C "<<endl;
                   cout<<"Please pay Rs."<<6000*Num_Rooms<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-RoomPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-RoomPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(RoomPayment>6000*Num_Rooms)
                   {
                       cout<<"You paid extra money : "<<RoomPayment-6000*Num_Rooms<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + RoomPayment-6000*Num_Rooms; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + RoomPayment-6000*Num_Rooms; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. Your rooms got booked"<<endl;
                       
                   }
@@ -385,13 +393,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -419,22 +427,22 @@ int main ()
                       cout<<"At present we have only "<<Dormitory_NAC<<" Rooms in our Hotel"<<endl;
                       goto label6;
                   }
-                  if(HotelWallet<4800*Num_Rooms)
+                  if(TotBal<4800*Num_Rooms)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Dormitory non-A/C "<<endl;
                   cout<<"Please pay Rs."<<4800*Num_Rooms<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-RoomPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-RoomPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(RoomPayment>4800*Num_Rooms)
                   {
                       cout<<"You paid extra money : "<<RoomPayment-4800*Num_Rooms<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + RoomPayment-4800*Num_Rooms; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + RoomPayment-4800*Num_Rooms; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. Your rooms got booked"<<endl;
                       --Double_Bed_NAC;
                   }
@@ -447,13 +455,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet- extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal- extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -520,7 +528,7 @@ int main ()
         }
         else
         {
-            cout<<"Balance in your HotelWallet: "<<HotelWallet<<endl;
+            cout<<"Balance in your HotelWallet: "<<TotBal<<endl;
             label7:
             cout<<"Number of quantity you want : ";
             cin>>Num_Food;
@@ -532,22 +540,22 @@ int main ()
                       cout<<"At present we have only "<<Sushi<<" quantity in our Hotel"<<endl;
                       goto label7;
                   }
-                if(HotelWallet<8000*Num_Food)
+                if(TotBal<8000*Num_Food)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choose : Sushi "<<endl;
                   cout<<"Please pay Rs."<<Num_Food*8000<<endl;
                   cout<<"Enter Payment : ";
                   cin>>DishPayment;
-                  HotelWallet=HotelWallet-DishPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-DishPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(DishPayment>Num_Food*8000)
                   {
                       cout<<"You paid extra money : "<<DishPayment-Num_Food*8000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + DishPayment-Num_Food*8000; 
-                      cout<<"Now, Balance in yor HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + DishPayment-Num_Food*8000; 
+                      cout<<"Now, Balance in yor HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. You will get food in 15  min"<<endl;
                       --Sushi;
                   }
@@ -560,13 +568,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -596,22 +604,22 @@ int main ()
                       cout<<"At present we have only "<<Gold_plated_dosa<<" quantity in our Hotel"<<endl;
                       goto label7;
                   }
-                  if(HotelWallet<7000*Num_Food)
+                  if(TotBal<7000*Num_Food)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choose : Gold plated dosa "<<endl;
                   cout<<"Please pay Rs."<<Num_Food*7000<<endl;
                   cout<<"Enter Payment : ";
                   cin>>DishPayment;
-                  HotelWallet=HotelWallet-DishPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-DishPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(DishPayment>Num_Food*7000)
                   {
                       cout<<"You paid extra money : "<<DishPayment-Num_Food*7000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + DishPayment-Num_Food*7000; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + DishPayment-Num_Food*7000; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. You will get food in 15  min"<<endl;
                       --Gold_plated_dosa;
                   }
@@ -624,13 +632,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -660,22 +668,22 @@ int main ()
                       cout<<"At present we have only "<<Peking_Duck<<" quantity in our Hotel"<<endl;
                       goto label7;
                   }
-                  if(HotelWallet<6000*Num_Food)
+                  if(TotBal<6000*Num_Food)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Peking Duck "<<endl;
                   cout<<"Please pay Rs."<<Num_Food*6000<<endl;
                   cout<<"Enter Payment : ";
                   cin>>RoomPayment;
-                  HotelWallet=HotelWallet-DishPayment;
-                  cout<<"Balance in your HotelWallet: "<<HotelWallet<<endl;
+                  TotBal=TotBal-DishPayment;
+                  cout<<"Balance in your HotelWallet: "<<TotBal<<endl;
                   if(RoomPayment>Num_Food*6000)
                   {
                       cout<<"You paid extra money : "<<DishPayment-Num_Food*6000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + DishPayment-Num_Food*6000; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + DishPayment-Num_Food*6000; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. You will get food in 15  min"<<endl;
                       --Peking_Duck;
                   }
@@ -688,13 +696,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -723,22 +731,22 @@ int main ()
                       cout<<"At present we have only "<<Pizza_Qube<<" quantity in our Hotel"<<endl;
                       goto label7;
                   }
-                  if(HotelWallet<5000*Num_Food)
+                  if(TotBal<5000*Num_Food)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Pizza - Qube "<<endl;
                   cout<<"Please pay Rs."<<Num_Food*5000<<endl;
                   cout<<"Enter Payment : ";
                   cin>>DishPayment;
-                  HotelWallet=HotelWallet-DishPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-DishPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(DishPayment>Num_Food*5000)
                   {
                       cout<<"You paid extra money : "<<DishPayment-Num_Food*5000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + DishPayment-Num_Food*5000; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + DishPayment-Num_Food*5000; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. You will get food in 15  min"<<endl;
                       --Pizza_Qube;
                   }
@@ -751,13 +759,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -785,22 +793,22 @@ int main ()
                       cout<<"At present we have only "<<Butter_Chicken<<" quantity in our Hotel"<<endl;
                       goto label7;
                   }
-                  if(HotelWallet<4000*Num_Food)
+                  if(TotBal<4000*Num_Food)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : Butter Chicken "<<endl;
                   cout<<"Please pay Rs."<<Num_Food*4000<<endl;
                   cout<<"Enter Payment : ";
                   cin>>DishPayment;
-                  HotelWallet=HotelWallet-DishPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-DishPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(DishPayment>Num_Food*4000)
                   {
                       cout<<"You paid extra money : "<<DishPayment-Num_Food*4000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + DishPayment-Num_Food*4000; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + DishPayment-Num_Food*4000; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. You will get food in 15  min"<<endl;
                       --Butter_Chicken;
                   }
@@ -813,13 +821,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -847,22 +855,22 @@ int main ()
                       cout<<"At present we have only "<<CurdRice<<" quantity in our Hotel"<<endl;
                       goto label7;
                   }
-                  if(HotelWallet<3000*Num_Food)
+                  if(TotBal<3000*Num_Food)
                   {
                       cout<<"Not sufficient Amount in HotelWallet. Send money to HotelWallet to Proceed"<<endl;
-                      return 0;
+                      goto label8;
                   }
                   cout<<"You have choosed : CurdRice "<<endl;
                   cout<<"Please pay Rs."<<Num_Food*3000<<endl;
                   cout<<"Enter Payment : ";
                   cin>>DishPayment;
-                  HotelWallet=HotelWallet-DishPayment;
-                  cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                  TotBal=TotBal-DishPayment;
+                  cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                   if(DishPayment>Num_Food*3000)
                   {
                       cout<<"You paid extra money : "<<DishPayment-Num_Food*3000<<". We have returned extra money to your HotelWallet."<<endl;
-                      HotelWallet = HotelWallet + DishPayment-Num_Food*3000; 
-                      cout<<"Now, Balance in your HotelWallet : "<<HotelWallet<<endl;
+                      TotBal = TotBal + DishPayment-Num_Food*3000; 
+                      cout<<"Now, Balance in your HotelWallet : "<<TotBal<<endl;
                       cout<<"Congractulations.Transaction is successful. You will get food in 15  min"<<endl;
                       --CurdRice;
                   }
@@ -875,13 +883,13 @@ int main ()
                       {
                           cout<<"Pay the extra money :";
                           cin>>extra;
-                          HotelWallet = HotelWallet - extra;
-                          cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                          TotBal = TotBal - extra;
+                          cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                           if(extra > extraPay)
                           {
                               cout<<"You paid extra money : "<<extra-extraPay<<". We have returned extra money to your HotelWallet."<<endl;
-                              HotelWallet = HotelWallet +extra-extraPay;
-                              cout<<"Balance in your HotelWallet : "<<HotelWallet<<endl;
+                              TotBal = TotBal +extra-extraPay;
+                              cout<<"Balance in your HotelWallet : "<<TotBal<<endl;
                               break;
                           }
                           else if(extra < extraPay)
@@ -909,8 +917,8 @@ int main ()
         }
   }
   
-  char Decision ;
   label5:
+  char Decision {0} ;
   cout<<"\n Press + to Book any room or food / Press - to Exit :";
   cin>>Decision;
   
@@ -923,13 +931,19 @@ int main ()
          cout<<"  ***************************************"<<endl;
          cout<<" ||  Thank You. We always welcome you!  ||"<<endl;
          cout<<"  ***************************************"<<endl;
+            
          break;
       default :
-         goto label5;
-         break;
+      {
+          goto label5;
+          break;
+      }
          
   }
   return 0;
 }
+
+
+
 
 
